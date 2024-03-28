@@ -2,7 +2,7 @@
 //  dt_discographyUITestsLaunchTests.swift
 //  dt-discographyUITests
 //
-//  Created by bacanador on 3/27/24.
+//  Created by Jose A. Mena on 3/27/24.
 //
 
 import XCTest

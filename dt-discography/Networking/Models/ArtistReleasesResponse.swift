@@ -16,20 +16,25 @@ struct ArtistReleasesResponse: Decodable {
         let pages: Int
         let perPage: Int
         let items: Int
-        let urls: [String]
+        let urls: Urls
     }
     
     struct Release: Decodable {
         let id: Int
-        let status: String
+        let status: String?
         let type: String
-        let format: String
-        let label: String
+        let format: String?
+        let label: String?
         let title: String
         let resourceUrl: String
         let role: String
         let artist: String
-        let year: Int
+        let year: Int?
         let thumb: String
+    }
+    
+    struct Urls: Decodable {
+        let last: String?
+        let next: String?
     }
 }

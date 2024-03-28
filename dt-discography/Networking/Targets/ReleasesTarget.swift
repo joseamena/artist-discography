@@ -9,11 +9,14 @@ struct ReleasesTarget: NetworkTarget {
     
     private let artistId: String
     
-    var parameters: [String : String]? = nil
-    
     var path: String {
-        "artists/\(artistId)/releases"
+        "https://api.discogs.com/artists/\(artistId)/releases"
     }
+    
+    var parameters: [String : String]? = [
+        "key": "TUnAIUTJDGQigRmrExsh",
+        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx"
+    ]
     
     var method: HTTPMethod = .get
     

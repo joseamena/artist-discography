@@ -35,6 +35,26 @@ extension NetworkClient {
        }
        .eraseToAnyPublisher()
     }
+    
+    func buildRequest<T: Decodable>(target: NetworkTarget, type: T.Type) async throws -> T{
+        guard let request = target.urlRequest else {
+            throw AppError.requestCreationFailed
+        }
+        
+        let (data, response) = try await session.data(for: request)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw AppError.unknown
+        }
+        guard 200..<300 ~= httpResponse.statusCode else {
+            throw AppError.httpError(httpResponse.statusCode)
+        }
+        do {
+            return try decode(from: data)
+        } catch {
+            throw AppError.decodingError(error as? DecodingError)
+        }
+    }
 }
 
 extension NetworkClient {

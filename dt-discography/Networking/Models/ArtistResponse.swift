@@ -14,7 +14,9 @@ struct ArtistResponse: Decodable {
     let uri: String
     let releasesUrl: String
     let images: [Image]
-    let members: [Member]
+    let profile: String
+    let urls: [String]?
+    let members: [Member]?
 
     struct Image: Decodable {
         let type: String

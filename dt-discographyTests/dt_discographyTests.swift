@@ -2,7 +2,7 @@
 //  dt_discographyTests.swift
 //  dt-discographyTests
 //
-//  Created by bacanador on 3/27/24.
+//  Created by Jose A. Mena on 3/27/24.
 //
 
 import XCTest
