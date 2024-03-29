@@ -13,10 +13,10 @@ extension LinearGradient {
             colors: [
                 Color.teal,
                 Color.blue,
-                Color.indigo
+                Color.indigo,
             ],
             startPoint: .bottomLeading,
             endPoint: .topTrailing
-            )
+        )
     }
 }

@@ -35,9 +35,9 @@ extension NetworkTarget {
         }
         return urlComponents.url
     }
-    
+
     var urlRequest: URLRequest? {
-        guard let url = self.url else {
+        guard let url = url else {
             return nil
         }
         var request = URLRequest(url: url)

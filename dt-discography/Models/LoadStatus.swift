@@ -11,7 +11,7 @@ public enum LoadStatus: Equatable {
     case loading
     case error(Error)
     case none
-    
+
     public static func == (lhs: LoadStatus, rhs: LoadStatus) -> Bool {
         switch (lhs, rhs) {
         case (.loading, .loading):
@@ -24,7 +24,7 @@ public enum LoadStatus: Equatable {
             return false
         }
     }
-    
+
     public static func != (lhs: Self, rhs: Self) -> Bool {
         !(lhs == rhs)
     }

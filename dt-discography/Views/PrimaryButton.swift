@@ -6,7 +6,8 @@
 //
 
 import SwiftUI
-//rgba(192,103,118,255)
+
+// rgba(192,103,118,255)
 struct PrimaryButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label

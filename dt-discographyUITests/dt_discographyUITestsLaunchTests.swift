@@ -8,7 +8,6 @@
 import XCTest
 
 final class dt_discographyUITestsLaunchTests: XCTestCase {
-
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true
     }

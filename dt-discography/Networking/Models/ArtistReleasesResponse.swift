@@ -10,7 +10,7 @@ import Foundation
 struct ArtistReleasesResponse: Decodable {
     let pagination: Pagination
     let releases: [Release]
-    
+
     struct Pagination: Decodable {
         let page: Int
         let pages: Int
@@ -18,7 +18,7 @@ struct ArtistReleasesResponse: Decodable {
         let items: Int
         let urls: Urls
     }
-    
+
     struct Release: Decodable {
         let id: Int
         let status: String?
@@ -33,7 +33,7 @@ struct ArtistReleasesResponse: Decodable {
         let year: Int?
         let thumb: String
     }
-    
+
     struct Urls: Decodable {
         let last: String?
         let next: String?

@@ -7,16 +7,16 @@
 
 struct ReleaseTarget: NetworkTarget {
     let path: String
-    
-    var parameters: [String : String]? = [
+
+    var parameters: [String: String]? = [
         "key": "TUnAIUTJDGQigRmrExsh",
-        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx"
+        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx",
     ]
-    
+
     var method: HTTPMethod = .get
-    
+
     var shouldCache: Bool = false
-    
+
     init(path: String) {
         self.path = path
     }

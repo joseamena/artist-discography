@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct ReleaseCardView: View {
-    
     let release: Release
-    
+
     var body: some View {
         ZStack {
             Color(uiColor: .systemBackground)
@@ -24,7 +23,7 @@ struct ReleaseCardView: View {
         .shadow(color: Color.primary.opacity(0.2), radius: 12, x: 8, y: 8)
         .padding()
     }
-    
+
     private var thumbnail: some View {
         AsyncImage(
             url: URL(string: release.thumb),
@@ -45,7 +44,7 @@ struct ReleaseCardView: View {
             }
         )
     }
-    
+
     private var releaseInfo: some View {
         VStack(alignment: .leading) {
             Text("Title: \(release.title)").multilineTextAlignment(.leading)

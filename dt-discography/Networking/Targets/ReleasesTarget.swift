@@ -6,22 +6,21 @@
 //
 
 struct ReleasesTarget: NetworkTarget {
-    
     private let artistId: String
-    
+
     var path: String {
         "https://api.discogs.com/artists/\(artistId)/releases"
     }
-    
-    var parameters: [String : String]? = [
+
+    var parameters: [String: String]? = [
         "key": "TUnAIUTJDGQigRmrExsh",
-        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx"
+        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx",
     ]
-    
+
     var method: HTTPMethod = .get
-    
+
     var shouldCache: Bool = false
-    
+
     init(artistId: String) {
         self.artistId = artistId
     }

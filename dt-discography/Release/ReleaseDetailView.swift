@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct ReleaseDetailView: View {
-    
     @StateObject private var viewModel = ReleaseDetailViewModel(client: DTDiscographyClient())
-    
+
     let release: Release
-    
+
     var body: some View {
         ScrollView(showsIndicators: false) {
             VStack {
@@ -30,7 +29,7 @@ struct ReleaseDetailView: View {
             await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
         }
     }
-    
+
     private var image: some View {
         AsyncImage(
             url: viewModel.imageUrl,
@@ -45,14 +44,14 @@ struct ReleaseDetailView: View {
             placeholder: {}
         )
     }
-    
+
     private var title: some View {
         HStack {
             Text(viewModel.title).font(.title2).bold()
             Spacer()
         }
     }
-    
+
     @ViewBuilder
     private var maybeTrackListing: some View {
         if !viewModel.trackListing.isEmpty {
@@ -65,7 +64,7 @@ struct ReleaseDetailView: View {
                     LinearGradient.accent
                         .opacity(0.6)
                 )
-                
+
                 ForEach(viewModel.trackListing, id: \.title) { track in
                     HStack {
                         Text("\(track.title)")
@@ -76,7 +75,7 @@ struct ReleaseDetailView: View {
             }
         }
     }
-    
+
     @ViewBuilder
     private var maybeRating: some View {
         if let rating = viewModel.rating {

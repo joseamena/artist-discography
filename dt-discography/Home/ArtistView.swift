@@ -9,11 +9,11 @@ import Kingfisher
 import SwiftUI
 
 struct ArtistView: View {
-    
     // MARK: - Private Properties -
+
     @StateObject private var viewModel = ArtistViewModel(client: DTDiscographyClient())
     @State private var navigationPath = NavigationPath()
-    
+
     var body: some View {
         NavigationStack(path: $navigationPath) {
             VStack(alignment: .leading, spacing: 0) {
@@ -24,7 +24,7 @@ struct ArtistView: View {
             .ignoresSafeArea()
             .navigationTitle(viewModel.artistName)
             .navigationBarHidden(true)
-            .navigationDestination(for: Int.self) { _ in    // TODO: Find a better way to navigate programatically
+            .navigationDestination(for: Int.self) { _ in // TODO: Find a better way to navigate programatically
                 DiscographyView()
             }
         }
@@ -32,7 +32,7 @@ struct ArtistView: View {
             await viewModel.fetchArtist()
         }
     }
-    
+
     private var mainContent: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
@@ -43,7 +43,7 @@ struct ArtistView: View {
         }
         .padding()
     }
-    
+
     private var viewDiscographyButton: some View {
         Button(action: discographyButtonPressed) {
             HStack {
@@ -64,7 +64,7 @@ struct ArtistView: View {
                         gradient: Gradient(
                             stops: [
                                 .init(color: .black, location: 0),
-                                .init(color: .clear, location: 1)
+                                .init(color: .clear, location: 1),
                             ]
                         ),
                         startPoint: .top, endPoint: .bottom
@@ -76,28 +76,28 @@ struct ArtistView: View {
                 .padding(.leading)
         }
     }
-    
+
     private var summary: some View {
-        VStack (alignment: .leading) {
+        VStack(alignment: .leading) {
             Text(viewModel.profile).font(.body)
                 .padding(.bottom)
             maybeCurrentMembers
                 .padding(.bottom)
         }
     }
-    
+
     @ViewBuilder
     private var maybeCurrentMembers: some View {
         if let currentMembers = viewModel.currentMembers {
             Text("Current Members: \(currentMembers)")
         }
     }
-    
+
     private var links: some View {
         VStack(alignment: .leading) {
             Text("Links:")
             ForEach(viewModel.urls, id: \.self) { link in
-                Button(action: { linkButtonPressed(link: link)}) {
+                Button(action: { linkButtonPressed(link: link) }) {
                     Text(link).font(.caption)
                 }
             }
@@ -111,7 +111,7 @@ struct ArtistView: View {
             UIApplication.shared.open(url)
         }
     }
-    
+
     private func discographyButtonPressed() {
         navigationPath.append(0)
     }

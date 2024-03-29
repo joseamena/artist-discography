@@ -10,21 +10,24 @@ import Foundation
 @MainActor
 class DiscographyViewModel: ObservableObject {
     // MARK: - Private properties -
+
     private let client: NetworkClient
 
     // MARK: - Outputs -
+
     @Published var loadStatus = LoadStatus.none
     @Published var releases: [Release] = []
-    
+
     // MARK: - Initialization -
+
     init(client: NetworkClient) {
         self.client = client
     }
-    
+
     func fetchReleases() async {
         let releasesTarget = ReleasesTarget(artistId: "335835")
         loadStatus = .loading
-        
+
         do {
             let releasesResponse = try await client.buildRequest(target: releasesTarget, type: ArtistReleasesResponse.self)
             loadStatus = .none

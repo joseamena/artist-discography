@@ -5,15 +5,16 @@
 //  Created by Jose A. Mena on 3/27/24.
 //
 
-import SwiftUI
 import CoreData
+import SwiftUI
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-        animation: .default)
+        animation: .default
+    )
     private var items: FetchedResults<Item>
 
     var body: some View {
@@ -58,7 +59,7 @@ struct ContentView: View {
 //        }
     }
 
-    private func deleteItems(offsets: IndexSet) {
+    private func deleteItems(offsets _: IndexSet) {
 //        withAnimation {
 //            offsets.map { items[$0] }.forEach(viewContext.delete)
 //

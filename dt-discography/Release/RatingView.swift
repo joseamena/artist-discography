@@ -13,13 +13,13 @@ import SwiftUI
 struct RatingView: View {
     let rating: Int
     let maximumRating = 5
-    
+
     var offColor = Color.gray
     var onColor = Color.yellow
-    
+
     var body: some View {
         HStack {
-            ForEach(1..<maximumRating + 1, id: \.self) { number in
+            ForEach(1 ..< maximumRating + 1, id: \.self) { number in
                 Image(systemName: "star.fill")
                     .foregroundStyle(number > rating ? offColor : onColor)
             }

@@ -8,7 +8,6 @@
 import Foundation
 
 struct ArtistTarget: NetworkTarget {
-
     private let artistId: String
 
     var path: String {
@@ -17,9 +16,9 @@ struct ArtistTarget: NetworkTarget {
 
     var method: HTTPMethod = .get
 
-    var parameters: [String : String]? = [
+    var parameters: [String: String]? = [
         "key": "TUnAIUTJDGQigRmrExsh",
-        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx"
+        "secret": "OtcGLYlAMufmJmVsDNKVuhzfHkneclYx",
     ]
 
     var shouldCache: Bool = false
@@ -27,5 +26,4 @@ struct ArtistTarget: NetworkTarget {
     init(artistId: String) {
         self.artistId = artistId
     }
-
 }
