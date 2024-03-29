@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct Release: Identifiable {
+struct Release: Identifiable, Hashable {
     let id: Int
+    let mainRelease: Int?
     let format: String?
     let title: String
     let label: String?

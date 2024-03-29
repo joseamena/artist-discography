@@ -10,11 +10,12 @@ import SwiftUI
 
 struct ArtistView: View {
     
+    // MARK: - Private Properties -
     @StateObject private var viewModel = ArtistViewModel(client: DTDiscographyClient())
-    @State private var showDiscography = false
+    @State private var navigationPath = NavigationPath()
     
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $navigationPath) {
             VStack(alignment: .leading, spacing: 0) {
                 artistImage
                 mainContent
@@ -23,10 +24,9 @@ struct ArtistView: View {
             .ignoresSafeArea()
             .navigationTitle(viewModel.artistName)
             .navigationBarHidden(true)
-            .navigationDestination(
-                isPresented: $showDiscography,
-                destination: { DiscographyView() }
-            )
+            .navigationDestination(for: Int.self) { _ in    // TODO: Find a better way to navigate programatically
+                DiscographyView()
+            }
         }
         .task(priority: .background) {
             await viewModel.fetchArtist()
@@ -45,7 +45,7 @@ struct ArtistView: View {
     }
     
     private var viewDiscographyButton: some View {
-        Button(action: { showDiscography = true }) {
+        Button(action: discographyButtonPressed) {
             HStack {
                 Text("Discography")
                 Image(systemName: "chevron.right")
@@ -103,11 +103,17 @@ struct ArtistView: View {
             }
         }
     }
-    
+
+    // MARK: - Behavior -
+
     private func linkButtonPressed(link: String) {
         if let url = URL(string: link) {
             UIApplication.shared.open(url)
         }
+    }
+    
+    private func discographyButtonPressed() {
+        navigationPath.append(0)
     }
 }
 

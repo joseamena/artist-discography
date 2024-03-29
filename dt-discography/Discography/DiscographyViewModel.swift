@@ -31,6 +31,7 @@ class DiscographyViewModel: ObservableObject {
             releases = releasesResponse.releases.map {
                 Release(
                     id: $0.id,
+                    mainRelease: $0.mainRelease,
                     format: $0.format,
                     title: $0.title,
                     label: $0.label,
@@ -40,7 +41,6 @@ class DiscographyViewModel: ObservableObject {
                 )
             }
         } catch {
-            print(error)
             loadStatus = .error(error)
         }
     }

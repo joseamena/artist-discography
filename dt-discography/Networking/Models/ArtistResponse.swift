@@ -13,19 +13,10 @@ struct ArtistResponse: Decodable {
     let resourceUrl: String
     let uri: String
     let releasesUrl: String
-    let images: [Image]
+    let images: [DiscogsImageData]
     let profile: String
     let urls: [String]?
     let members: [Member]?
-
-    struct Image: Decodable {
-        let type: String
-        let uri: String
-        let resourceUrl: String
-        let uri150: String
-        let width: Int
-        let height: Int
-    }
 
     struct Member: Decodable {
         let id: Int

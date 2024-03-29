@@ -8,21 +8,29 @@
 import SwiftUI
 
 struct DiscographyView: View {
-    
     @StateObject private var viewModel = DiscographyViewModel(client: DTDiscographyClient())
-    
+
     var body: some View {
-        NavigationStack {
-            discographyList
-        }
-        .task(priority: .background) {
-            await viewModel.fetchReleases()
-        }
+        discographyList
+            .navigationTitle("Discography")
+            .navigationDestination(for: Release.self) { release in
+                ReleaseDetailView(release: release)
+            }
+            .task(priority: .background) {
+                await viewModel.fetchReleases()
+            }
     }
-    
+
     private var discographyList: some View {
-        List(viewModel.releases) { release in
-            return Text(release.title)
+        ScrollView {
+            LazyVStack {
+                ForEach(viewModel.releases) { release in
+                    NavigationLink(value: release) {
+                        ReleaseCardView(release: release)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
+            }
         }
     }
 }

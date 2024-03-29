@@ -23,6 +23,7 @@ struct ArtistReleasesResponse: Decodable {
         let id: Int
         let status: String?
         let type: String
+        let mainRelease: Int?
         let format: String?
         let label: String?
         let title: String

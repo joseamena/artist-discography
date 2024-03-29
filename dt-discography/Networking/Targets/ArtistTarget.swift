@@ -6,8 +6,6 @@
 //
 
 import Foundation
-// 260935
-// artists/{artist_id}
 
 struct ArtistTarget: NetworkTarget {
 

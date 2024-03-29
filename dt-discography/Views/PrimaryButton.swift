@@ -12,17 +12,7 @@ struct PrimaryButton: ButtonStyle {
         configuration.label
             .font(.body).bold()
             .padding()
-            .background(
-                LinearGradient(
-                    colors: [
-                        Color.teal,
-                        Color.blue,
-                        Color.indigo
-                    ],
-                    startPoint: .bottomLeading,
-                    endPoint: .topTrailing
-                )
-            )
+            .background(LinearGradient.accent)
             .clipShape(RoundedRectangle(cornerRadius: 12))
             .scaleEffect(configuration.isPressed ? 0.95 : 1.0)
             .animation(.easeInOut, value: 0.1)
