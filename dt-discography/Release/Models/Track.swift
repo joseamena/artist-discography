@@ -7,8 +7,12 @@
 
 import Foundation
 
-struct Track {
+struct Track: Hashable, Identifiable {
     let position: String
     let title: String
     let duration: String
+
+    var id: String {
+        position + title + duration
+    }
 }

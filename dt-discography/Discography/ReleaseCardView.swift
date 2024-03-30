@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct ReleaseCardView: View {
+    // MARK: - Properties -
+
     let release: Release
+
+    // MARK: - UI Content -
 
     var body: some View {
         ZStack {
@@ -54,6 +58,8 @@ struct ReleaseCardView: View {
         }
     }
 }
+
+// MARK: - Previews -
 
 #Preview {
     ReleaseCardView(

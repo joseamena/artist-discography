@@ -2,7 +2,7 @@
 //  RatingView.swift
 //  dt-discography
 //
-//  Created by bacanador on 3/29/24.
+//  Created by Jose A. Mena on 3/29/24.
 //
 
 import SwiftUI

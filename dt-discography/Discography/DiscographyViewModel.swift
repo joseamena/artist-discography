@@ -24,6 +24,8 @@ class DiscographyViewModel: ObservableObject {
         self.client = client
     }
 
+    // MARK: - Data Fetching -
+
     func fetchReleases() async {
         let releasesTarget = ReleasesTarget(artistId: "335835")
         loadStatus = .loading

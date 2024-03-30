@@ -27,7 +27,7 @@
 		78F861272BB4C29D00C1F4DB /* ArtistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861262BB4C29D00C1F4DB /* ArtistView.swift */; };
 		78F8612A2BB4D9C800C1F4DB /* LoadStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861292BB4D9C800C1F4DB /* LoadStatus.swift */; };
 		78F8612D2BB4DFB000C1F4DB /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 78F8612C2BB4DFB000C1F4DB /* Kingfisher */; };
-		78F8612F2BB525E100C1F4DB /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8612E2BB525E100C1F4DB /* PrimaryButton.swift */; };
+		78F8612F2BB525E100C1F4DB /* CustomButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8612E2BB525E100C1F4DB /* CustomButtons.swift */; };
 		78F861312BB54FBB00C1F4DB /* ReleaseCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861302BB54FBB00C1F4DB /* ReleaseCardView.swift */; };
 		78F861332BB5503800C1F4DB /* Release.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861322BB5503800C1F4DB /* Release.swift */; };
 		78F861372BB5D7AE00C1F4DB /* DiscographyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861362BB5D7AE00C1F4DB /* DiscographyView.swift */; };
@@ -39,7 +39,9 @@
 		78F861442BB66D5900C1F4DB /* DiscogsImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861432BB66D5900C1F4DB /* DiscogsImageData.swift */; };
 		78F861472BB670BF00C1F4DB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861462BB670BF00C1F4DB /* Track.swift */; };
 		78F861492BB67A1000C1F4DB /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861482BB67A1000C1F4DB /* RatingView.swift */; };
-		78F8614C2BB68A4F00C1F4DB /* ShapeStyle+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8614B2BB68A4E00C1F4DB /* ShapeStyle+Helpers.swift */; };
+		78F8614C2BB68A4F00C1F4DB /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8614B2BB68A4E00C1F4DB /* SwiftUIExtensions.swift */; };
+		78F861512BB6FBB000C1F4DB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861502BB6FBB000C1F4DB /* ErrorView.swift */; };
+		78F861532BB893DA00C1F4DB /* FoundationExtesnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,7 +84,7 @@
 		78F861242BB4BF0900C1F4DB /* ArtistViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModel.swift; sourceTree = "<group>"; };
 		78F861262BB4C29D00C1F4DB /* ArtistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistView.swift; sourceTree = "<group>"; };
 		78F861292BB4D9C800C1F4DB /* LoadStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadStatus.swift; sourceTree = "<group>"; };
-		78F8612E2BB525E100C1F4DB /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		78F8612E2BB525E100C1F4DB /* CustomButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtons.swift; sourceTree = "<group>"; };
 		78F861302BB54FBB00C1F4DB /* ReleaseCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseCardView.swift; sourceTree = "<group>"; };
 		78F861322BB5503800C1F4DB /* Release.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Release.swift; sourceTree = "<group>"; };
 		78F861362BB5D7AE00C1F4DB /* DiscographyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscographyView.swift; sourceTree = "<group>"; };
@@ -94,7 +96,9 @@
 		78F861432BB66D5900C1F4DB /* DiscogsImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsImageData.swift; sourceTree = "<group>"; };
 		78F861462BB670BF00C1F4DB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		78F861482BB67A1000C1F4DB /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
-		78F8614B2BB68A4E00C1F4DB /* ShapeStyle+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShapeStyle+Helpers.swift"; sourceTree = "<group>"; };
+		78F8614B2BB68A4E00C1F4DB /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
+		78F861502BB6FBB000C1F4DB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtesnsions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,7 +228,8 @@
 			isa = PBXGroup;
 			children = (
 				78F860E22BB4AD6900C1F4DB /* ContentView.swift */,
-				78F8612E2BB525E100C1F4DB /* PrimaryButton.swift */,
+				78F8612E2BB525E100C1F4DB /* CustomButtons.swift */,
+				78F861502BB6FBB000C1F4DB /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,7 +238,6 @@
 			isa = PBXGroup;
 			children = (
 				78F861292BB4D9C800C1F4DB /* LoadStatus.swift */,
-				78F861322BB5503800C1F4DB /* Release.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,6 +257,7 @@
 				78F861362BB5D7AE00C1F4DB /* DiscographyView.swift */,
 				78F861382BB5D8C700C1F4DB /* DiscographyViewModel.swift */,
 				78F861302BB54FBB00C1F4DB /* ReleaseCardView.swift */,
+				78F8614D2BB6FAC000C1F4DB /* Models */,
 			);
 			path = Discography;
 			sourceTree = "<group>";
@@ -279,9 +284,18 @@
 		78F8614A2BB689A900C1F4DB /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				78F8614B2BB68A4E00C1F4DB /* ShapeStyle+Helpers.swift */,
+				78F8614B2BB68A4E00C1F4DB /* SwiftUIExtensions.swift */,
+				78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		78F8614D2BB6FAC000C1F4DB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				78F861322BB5503800C1F4DB /* Release.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -428,12 +442,14 @@
 				78F860E32BB4AD6900C1F4DB /* ContentView.swift in Sources */,
 				78F861252BB4BF0900C1F4DB /* ArtistViewModel.swift in Sources */,
 				78F861492BB67A1000C1F4DB /* RatingView.swift in Sources */,
+				78F861532BB893DA00C1F4DB /* FoundationExtesnsions.swift in Sources */,
 				78F861332BB5503800C1F4DB /* Release.swift in Sources */,
 				78F861182BB4B5EE00C1F4DB /* ArtistTarget.swift in Sources */,
 				78F861312BB54FBB00C1F4DB /* ReleaseCardView.swift in Sources */,
+				78F861512BB6FBB000C1F4DB /* ErrorView.swift in Sources */,
 				78F861142BB4AE5F00C1F4DB /* NetworkTarget.swift in Sources */,
 				78F861442BB66D5900C1F4DB /* DiscogsImageData.swift in Sources */,
-				78F8614C2BB68A4F00C1F4DB /* ShapeStyle+Helpers.swift in Sources */,
+				78F8614C2BB68A4F00C1F4DB /* SwiftUIExtensions.swift in Sources */,
 				78F8613E2BB662FD00C1F4DB /* ReleaseTarget.swift in Sources */,
 				78F860E12BB4AD6900C1F4DB /* dt_discographyApp.swift in Sources */,
 				78F861372BB5D7AE00C1F4DB /* DiscographyView.swift in Sources */,
@@ -442,7 +458,7 @@
 				78F860ED2BB4AD6E00C1F4DB /* dt_discography.xcdatamodeld in Sources */,
 				78F8611D2BB4B98100C1F4DB /* ArtistReleasesResponse.swift in Sources */,
 				78F8612A2BB4D9C800C1F4DB /* LoadStatus.swift in Sources */,
-				78F8612F2BB525E100C1F4DB /* PrimaryButton.swift in Sources */,
+				78F8612F2BB525E100C1F4DB /* CustomButtons.swift in Sources */,
 				78F861392BB5D8C700C1F4DB /* DiscographyViewModel.swift in Sources */,
 				78F8613C2BB6570600C1F4DB /* ReleaseDetailView.swift in Sources */,
 				78F861162BB4AEF500C1F4DB /* AppError.swift in Sources */,

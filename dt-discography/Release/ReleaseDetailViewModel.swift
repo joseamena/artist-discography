@@ -27,6 +27,8 @@ class ReleaseDetailViewModel: ObservableObject {
         self.client = client
     }
 
+    // MARK: - Data Fetching -
+
     func fetchReleaseDetails(uri: String) async {
         let releaseTarget = ReleaseTarget(path: uri)
         loadStatus = .loading
@@ -40,16 +42,16 @@ class ReleaseDetailViewModel: ObservableObject {
             }
 
             title = releaseResponse.title
-            trackListing = releaseResponse.tracklist.map {
-                Track(
-                    position: $0.position,
-                    title: $0.title,
-                    duration: $0.duration
-                )
-            }
-
+            trackListing = releaseResponse.tracklist
+                .map {
+                    Track(
+                        position: $0.position,
+                        title: $0.title,
+                        duration: $0.duration
+                    )
+                }
+                .removingDuplicates()
             if let ratingAverage = releaseResponse.community?.rating.average {
-                print(ratingAverage)
                 rating = Int(ceil(ratingAverage))
             }
         } catch {

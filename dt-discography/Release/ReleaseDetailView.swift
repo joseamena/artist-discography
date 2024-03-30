@@ -8,11 +8,29 @@
 import SwiftUI
 
 struct ReleaseDetailView: View {
-    @StateObject private var viewModel = ReleaseDetailViewModel(client: DTDiscographyClient())
+    @StateObject private var viewModel = ReleaseDetailViewModel(client: DTDiscographyClient.shared)
 
     let release: Release
 
     var body: some View {
+        // If More screens require the same pattern look into
+        // refactoring by create a wrapper view to show loading status or content
+        Group {
+            switch viewModel.loadStatus {
+            case .loading:
+                ProgressView()
+            case let .error(error):
+                ErrorView(error: error, action: errorRetryButtonPressed)
+            case .none:
+                content
+            }
+        }
+        .task {
+            await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
+        }
+    }
+
+    private var content: some View {
         ScrollView(showsIndicators: false) {
             VStack {
                 title
@@ -25,9 +43,6 @@ struct ReleaseDetailView: View {
             }
         }
         .padding(.horizontal)
-        .task {
-            await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
-        }
     }
 
     private var image: some View {
@@ -65,7 +80,7 @@ struct ReleaseDetailView: View {
                         .opacity(0.6)
                 )
 
-                ForEach(viewModel.trackListing, id: \.title) { track in
+                ForEach(viewModel.trackListing) { track in
                     HStack {
                         Text("\(track.title)")
                         Spacer()
@@ -84,6 +99,14 @@ struct ReleaseDetailView: View {
                 RatingView(rating: rating)
                 Spacer()
             }
+        }
+    }
+
+    // MARK: - Behavior -
+
+    private func errorRetryButtonPressed() {
+        Task {
+            await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
         }
     }
 }

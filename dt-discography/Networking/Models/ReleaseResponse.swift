@@ -2,7 +2,7 @@
 //  ReleaseResponse.swift
 //  dt-discography
 //
-//  Created by bacanador on 3/28/24.
+//  Created by Jose A. Mena on 3/28/24.
 //
 
 struct ReleaseResponse: Decodable {

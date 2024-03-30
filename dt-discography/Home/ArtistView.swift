@@ -11,14 +11,34 @@ import SwiftUI
 struct ArtistView: View {
     // MARK: - Private Properties -
 
-    @StateObject private var viewModel = ArtistViewModel(client: DTDiscographyClient())
+    @StateObject private var viewModel = ArtistViewModel(client: DTDiscographyClient.shared)
     @State private var navigationPath = NavigationPath()
 
+    // MARK: - UI Content -
+
     var body: some View {
+        // If More screens require the same pattern look into
+        // refactoring by create a wrapper view to show loading status or content
+        Group {
+            switch viewModel.loadStatus {
+            case .loading:
+                ProgressView()
+            case let .error(error):
+                ErrorView(error: error, action: errorRetryButtonPressed)
+            case .none:
+                content
+            }
+        }
+        .task(priority: .background) {
+            await viewModel.fetchArtist()
+        }
+    }
+
+    private var content: some View {
         NavigationStack(path: $navigationPath) {
             VStack(alignment: .leading, spacing: 0) {
                 artistImage
-                mainContent
+                artistDetails
                 Spacer()
             }
             .ignoresSafeArea()
@@ -28,12 +48,9 @@ struct ArtistView: View {
                 DiscographyView()
             }
         }
-        .task(priority: .background) {
-            await viewModel.fetchArtist()
-        }
     }
 
-    private var mainContent: some View {
+    private var artistDetails: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 summary
@@ -98,7 +115,7 @@ struct ArtistView: View {
             Text("Links:")
             ForEach(viewModel.urls, id: \.self) { link in
                 Button(action: { linkButtonPressed(link: link) }) {
-                    Text(link).font(.caption)
+                    Text(link).font(.body)
                 }
             }
         }
@@ -114,6 +131,12 @@ struct ArtistView: View {
 
     private func discographyButtonPressed() {
         navigationPath.append(0)
+    }
+
+    private func errorRetryButtonPressed() {
+        Task {
+            await viewModel.fetchArtist()
+        }
     }
 }
 
