@@ -35,7 +35,7 @@
 		78F8613C2BB6570600C1F4DB /* ReleaseDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8613B2BB6570600C1F4DB /* ReleaseDetailView.swift */; };
 		78F8613E2BB662FD00C1F4DB /* ReleaseTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8613D2BB662FD00C1F4DB /* ReleaseTarget.swift */; };
 		78F861402BB663D000C1F4DB /* ReleaseResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8613F2BB663D000C1F4DB /* ReleaseResponse.swift */; };
-		78F861422BB66BED00C1F4DB /* ReleaseDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861412BB66BEC00C1F4DB /* ReleaseDetailViewModel.swift */; };
+		78F861422BB66BED00C1F4DB /* ReleaseDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861412BB66BEC00C1F4DB /* ReleaseDetailsViewModel.swift */; };
 		78F861442BB66D5900C1F4DB /* DiscogsImageData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861432BB66D5900C1F4DB /* DiscogsImageData.swift */; };
 		78F861472BB670BF00C1F4DB /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861462BB670BF00C1F4DB /* Track.swift */; };
 		78F861492BB67A1000C1F4DB /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861482BB67A1000C1F4DB /* RatingView.swift */; };
@@ -43,6 +43,10 @@
 		78F861512BB6FBB000C1F4DB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861502BB6FBB000C1F4DB /* ErrorView.swift */; };
 		78F861532BB893DA00C1F4DB /* FoundationExtesnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */; };
 		78F861552BB8A9FD00C1F4DB /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861542BB8A9FD00C1F4DB /* Cache.swift */; };
+		78F861572BB8BE8B00C1F4DB /* ArtistViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861562BB8BE8B00C1F4DB /* ArtistViewModelTests.swift */; };
+		78F8615A2BB8C4C800C1F4DB /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861592BB8C4C800C1F4DB /* Mocks.swift */; };
+		78F8615C2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615B2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift */; };
+		78F8615E2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,7 +97,7 @@
 		78F8613B2BB6570600C1F4DB /* ReleaseDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetailView.swift; sourceTree = "<group>"; };
 		78F8613D2BB662FD00C1F4DB /* ReleaseTarget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseTarget.swift; sourceTree = "<group>"; };
 		78F8613F2BB663D000C1F4DB /* ReleaseResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseResponse.swift; sourceTree = "<group>"; };
-		78F861412BB66BEC00C1F4DB /* ReleaseDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetailViewModel.swift; sourceTree = "<group>"; };
+		78F861412BB66BEC00C1F4DB /* ReleaseDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetailsViewModel.swift; sourceTree = "<group>"; };
 		78F861432BB66D5900C1F4DB /* DiscogsImageData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscogsImageData.swift; sourceTree = "<group>"; };
 		78F861462BB670BF00C1F4DB /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		78F861482BB67A1000C1F4DB /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
@@ -101,6 +105,10 @@
 		78F861502BB6FBB000C1F4DB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtesnsions.swift; sourceTree = "<group>"; };
 		78F861542BB8A9FD00C1F4DB /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
+		78F861562BB8BE8B00C1F4DB /* ArtistViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtistViewModelTests.swift; sourceTree = "<group>"; };
+		78F861592BB8C4C800C1F4DB /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
+		78F8615B2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscographyViewModelTests.swift; sourceTree = "<group>"; };
+		78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetailsViewModelTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +162,7 @@
 			children = (
 				78F860E02BB4AD6900C1F4DB /* dt_discographyApp.swift */,
 				78F8614A2BB689A900C1F4DB /* Extensions */,
-				78F8613A2BB656CD00C1F4DB /* Release */,
+				78F8613A2BB656CD00C1F4DB /* ReleaseDetails */,
 				78F861352BB5D79200C1F4DB /* Discography */,
 				78F861342BB5BFC200C1F4DB /* Home */,
 				78F861282BB4D9B700C1F4DB /* Models */,
@@ -180,6 +188,8 @@
 		78F860F52BB4AD6E00C1F4DB /* dt-discographyTests */ = {
 			isa = PBXGroup;
 			children = (
+				78F861592BB8C4C800C1F4DB /* Mocks.swift */,
+				78F861582BB8C4B200C1F4DB /* ViewModelTests */,
 				78F860F62BB4AD6E00C1F4DB /* dt_discographyTests.swift */,
 			);
 			path = "dt-discographyTests";
@@ -265,15 +275,15 @@
 			path = Discography;
 			sourceTree = "<group>";
 		};
-		78F8613A2BB656CD00C1F4DB /* Release */ = {
+		78F8613A2BB656CD00C1F4DB /* ReleaseDetails */ = {
 			isa = PBXGroup;
 			children = (
 				78F8613B2BB6570600C1F4DB /* ReleaseDetailView.swift */,
-				78F861412BB66BEC00C1F4DB /* ReleaseDetailViewModel.swift */,
+				78F861412BB66BEC00C1F4DB /* ReleaseDetailsViewModel.swift */,
 				78F861482BB67A1000C1F4DB /* RatingView.swift */,
 				78F861452BB670A900C1F4DB /* Models */,
 			);
-			path = Release;
+			path = ReleaseDetails;
 			sourceTree = "<group>";
 		};
 		78F861452BB670A900C1F4DB /* Models */ = {
@@ -299,6 +309,16 @@
 				78F861322BB5503800C1F4DB /* Release.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		78F861582BB8C4B200C1F4DB /* ViewModelTests */ = {
+			isa = PBXGroup;
+			children = (
+				78F861562BB8BE8B00C1F4DB /* ArtistViewModelTests.swift */,
+				78F8615B2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift */,
+				78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */,
+			);
+			path = ViewModelTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -457,7 +477,7 @@
 				78F8613E2BB662FD00C1F4DB /* ReleaseTarget.swift in Sources */,
 				78F860E12BB4AD6900C1F4DB /* dt_discographyApp.swift in Sources */,
 				78F861372BB5D7AE00C1F4DB /* DiscographyView.swift in Sources */,
-				78F861422BB66BED00C1F4DB /* ReleaseDetailViewModel.swift in Sources */,
+				78F861422BB66BED00C1F4DB /* ReleaseDetailsViewModel.swift in Sources */,
 				78F861272BB4C29D00C1F4DB /* ArtistView.swift in Sources */,
 				78F860ED2BB4AD6E00C1F4DB /* dt_discography.xcdatamodeld in Sources */,
 				78F8611D2BB4B98100C1F4DB /* ArtistReleasesResponse.swift in Sources */,
@@ -475,6 +495,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				78F860F72BB4AD6E00C1F4DB /* dt_discographyTests.swift in Sources */,
+				78F861572BB8BE8B00C1F4DB /* ArtistViewModelTests.swift in Sources */,
+				78F8615C2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift in Sources */,
+				78F8615E2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift in Sources */,
+				78F8615A2BB8C4C800C1F4DB /* Mocks.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

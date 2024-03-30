@@ -1,5 +1,5 @@
 //
-//  ReleaseDetailViewModel.swift
+//  ReleaseDetailsViewModel.swift
 //  dt-discography
 //
 //  Created by Jose A. Mena on 3/28/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class ReleaseDetailViewModel: ObservableObject {
+class ReleaseDetailsViewModel: ObservableObject {
     // MARK: - Private properties -
 
     private let client: NetworkClient

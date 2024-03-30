@@ -22,6 +22,10 @@ protocol NetworkClient {
 // MARK: - Protocol Default Implementations -
 
 extension NetworkClient {
+    // MARK: - NetworkClient Combine Implementation -
+
+    // At the moment not being used, the project started using combine, but decided to go in another direction
+    // Left this here in case I need to re-consider and go back
     func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type, ignoreCache _: Bool = true) -> AnyPublisher<T, Error> {
         guard connectivity else {
             return Fail(error: AppError.notConnectedToInternet)
@@ -48,6 +52,8 @@ extension NetworkClient {
         }
         .eraseToAnyPublisher()
     }
+
+    // MARK: - NetworkClient Async Await Implementation -
 
     func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type, ignoreCache: Bool = true) async throws -> T {
         // Check if there is cached data

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReleaseDetailView: View {
-    @StateObject private var viewModel = ReleaseDetailViewModel(client: DTDiscographyClient.shared)
+    @StateObject private var viewModel = ReleaseDetailsViewModel(client: DTDiscographyClient.shared)
 
     let release: Release
 
