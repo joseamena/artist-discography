@@ -31,7 +31,11 @@ class DiscographyViewModel: ObservableObject {
         loadStatus = .loading
 
         do {
-            let releasesResponse = try await client.buildRequest(target: releasesTarget, type: ArtistReleasesResponse.self)
+            let releasesResponse = try await client.buildRequest(
+                target: releasesTarget,
+                type: ArtistReleasesResponse.self,
+                ignoreCache: false
+            )
             loadStatus = .none
             releases = releasesResponse.releases.map {
                 Release(

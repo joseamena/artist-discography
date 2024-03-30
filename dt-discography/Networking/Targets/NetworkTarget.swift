@@ -46,3 +46,15 @@ extension NetworkTarget {
         return request
     }
 }
+
+extension NetworkTarget {
+    var cacheKey: String {
+        var params = "[:]"
+
+        if let parameters = parameters {
+            params = "\(parameters.sorted(by: { $0.0 < $1.0 }))"
+        }
+
+        return "\(type(of: Self.self))--\(path)--\(method)--\(params)"
+    }
+}

@@ -42,6 +42,7 @@
 		78F8614C2BB68A4F00C1F4DB /* SwiftUIExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8614B2BB68A4E00C1F4DB /* SwiftUIExtensions.swift */; };
 		78F861512BB6FBB000C1F4DB /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861502BB6FBB000C1F4DB /* ErrorView.swift */; };
 		78F861532BB893DA00C1F4DB /* FoundationExtesnsions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */; };
+		78F861552BB8A9FD00C1F4DB /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861542BB8A9FD00C1F4DB /* Cache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -99,6 +100,7 @@
 		78F8614B2BB68A4E00C1F4DB /* SwiftUIExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIExtensions.swift; sourceTree = "<group>"; };
 		78F861502BB6FBB000C1F4DB /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		78F861522BB893DA00C1F4DB /* FoundationExtesnsions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoundationExtesnsions.swift; sourceTree = "<group>"; };
+		78F861542BB8A9FD00C1F4DB /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		78F860DF2BB4AD6900C1F4DB /* dt-discography */ = {
 			isa = PBXGroup;
 			children = (
+				78F860E02BB4AD6900C1F4DB /* dt_discographyApp.swift */,
 				78F8614A2BB689A900C1F4DB /* Extensions */,
 				78F8613A2BB656CD00C1F4DB /* Release */,
 				78F861352BB5D79200C1F4DB /* Discography */,
@@ -157,7 +160,6 @@
 				78F861282BB4D9B700C1F4DB /* Models */,
 				78F861222BB4BE7100C1F4DB /* Views */,
 				78F8610F2BB4ADED00C1F4DB /* Networking */,
-				78F860E02BB4AD6900C1F4DB /* dt_discographyApp.swift */,
 				78F860E42BB4AD6E00C1F4DB /* Assets.xcassets */,
 				78F860E92BB4AD6E00C1F4DB /* Persistence.swift */,
 				78F860EB2BB4AD6E00C1F4DB /* dt_discography.xcdatamodeld */,
@@ -195,8 +197,9 @@
 		78F8610F2BB4ADED00C1F4DB /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				78F861192BB4B80400C1F4DB /* Models */,
 				78F861102BB4AE0B00C1F4DB /* NetworkClient.swift */,
+				78F861542BB8A9FD00C1F4DB /* Cache.swift */,
+				78F861192BB4B80400C1F4DB /* Models */,
 				78F861122BB4AE2B00C1F4DB /* Targets */,
 			);
 			path = Networking;
@@ -450,6 +453,7 @@
 				78F861142BB4AE5F00C1F4DB /* NetworkTarget.swift in Sources */,
 				78F861442BB66D5900C1F4DB /* DiscogsImageData.swift in Sources */,
 				78F8614C2BB68A4F00C1F4DB /* SwiftUIExtensions.swift in Sources */,
+				78F861552BB8A9FD00C1F4DB /* Cache.swift in Sources */,
 				78F8613E2BB662FD00C1F4DB /* ReleaseTarget.swift in Sources */,
 				78F860E12BB4AD6900C1F4DB /* dt_discographyApp.swift in Sources */,
 				78F861372BB5D7AE00C1F4DB /* DiscographyView.swift in Sources */,

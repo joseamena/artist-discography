@@ -34,7 +34,12 @@ class ReleaseDetailViewModel: ObservableObject {
         loadStatus = .loading
 
         do {
-            let releaseResponse = try await client.buildRequest(target: releaseTarget, type: ReleaseResponse.self)
+            let releaseResponse = try await client.buildRequest(
+                target: releaseTarget,
+                type: ReleaseResponse.self,
+                ignoreCache: false
+            )
+
             loadStatus = .none
 
             if let imageData = releaseResponse.images.first(where: { $0.type == "primary" }) ?? releaseResponse.images.first {
@@ -55,7 +60,6 @@ class ReleaseDetailViewModel: ObservableObject {
                 rating = Int(ceil(ratingAverage))
             }
         } catch {
-            print(error)
             loadStatus = .error(error)
         }
     }

@@ -13,15 +13,16 @@ import Network
 
 protocol NetworkClient {
     var session: URLSession { get }
+    var cache: Cache<String, Data> { get }
     var connectivity: Bool { get }
-    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type) -> AnyPublisher<T, Error>
-    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type) async throws -> T
+    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type, ignoreCache: Bool) -> AnyPublisher<T, Error>
+    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type, ignoreCache: Bool) async throws -> T
 }
 
 // MARK: - Protocol Default Implementations -
 
 extension NetworkClient {
-    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type) -> AnyPublisher<T, Error> {
+    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type, ignoreCache _: Bool = true) -> AnyPublisher<T, Error> {
         guard connectivity else {
             return Fail(error: AppError.notConnectedToInternet)
                 .eraseToAnyPublisher()
@@ -48,8 +49,12 @@ extension NetworkClient {
         .eraseToAnyPublisher()
     }
 
-    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type) async throws -> T {
-        print("Connected:", connectivity)
+    func buildRequest<T: Decodable>(target: NetworkTarget, type _: T.Type, ignoreCache: Bool = true) async throws -> T {
+        // Check if there is cached data
+        if !ignoreCache, let cachedData = cache.value(forKey: target.cacheKey) {
+            return try decode(from: cachedData)
+        }
+
         guard connectivity else {
             throw AppError.notConnectedToInternet
         }
@@ -66,7 +71,11 @@ extension NetworkClient {
             throw AppError.httpError(httpResponse.statusCode)
         }
         do {
-            return try decode(from: data)
+            let decoded: T = try decode(from: data)
+            if target.shouldCache {
+                cache.insert(data, forKey: target.cacheKey)
+            }
+            return decoded
         } catch {
             throw AppError.decodingError(error as? DecodingError)
         }
@@ -94,9 +103,9 @@ extension NetworkClient {
 
 class DTDiscographyClient: NetworkClient {
     let session: URLSession = .shared
+    let cache = Cache<String, Data>()
     private let monitor = NWPathMonitor()
     private let connectivitySubject = CurrentValueSubject<Bool, Never>(false)
-    private var cancellables = Set<AnyCancellable>()
 
     static let shared = DTDiscographyClient()
 
@@ -115,10 +124,5 @@ class DTDiscographyClient: NetworkClient {
 
         let queue = DispatchQueue(label: "NetworkMonitor")
         monitor.start(queue: queue)
-
-        connectivitySubject.sink(receiveValue: {
-            print("received:", $0)
-        })
-        .store(in: &cancellables)
     }
 }

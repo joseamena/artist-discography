@@ -19,7 +19,7 @@ struct ReleasesTarget: NetworkTarget {
 
     var method: HTTPMethod = .get
 
-    var shouldCache: Bool = false
+    var shouldCache: Bool = true
 
     init(artistId: String) {
         self.artistId = artistId

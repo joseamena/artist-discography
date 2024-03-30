@@ -37,7 +37,7 @@ class ArtistViewModel: ObservableObject {
         loadStatus = .loading
 
         do {
-            let artistResponse = try await client.buildRequest(target: artistTarget, type: ArtistResponse.self)
+            let artistResponse = try await client.buildRequest(target: artistTarget, type: ArtistResponse.self, ignoreCache: false)
             loadStatus = .none
             if let primaryImage = artistResponse.images.first(where: { $0.type == "secondary" })?.uri {
                 primaryImageUrl = URL(string: primaryImage)
