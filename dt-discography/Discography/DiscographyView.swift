@@ -27,6 +27,7 @@ struct DiscographyView: View {
                 content
             }
         }
+        .accessibilityIdentifier("discographyView")
         .task(priority: .background) {
             await viewModel.fetchReleases()
         }

@@ -17,6 +17,7 @@ class ReleaseDetailsViewModel: ObservableObject {
 
     @Published var loadStatus = LoadStatus.none
     @Published var imageUrl: URL?
+    @Published var imageSize: CGSize = .zero
     @Published var title: String = ""
     @Published var trackListing: [Track] = []
     @Published var rating: Int?
@@ -44,6 +45,7 @@ class ReleaseDetailsViewModel: ObservableObject {
 
             if let imageData = releaseResponse.images.first(where: { $0.type == "primary" }) ?? releaseResponse.images.first {
                 imageUrl = URL(string: imageData.uri)
+                imageSize = CGSize(width: imageData.width, height: imageData.height)
             }
 
             title = releaseResponse.title

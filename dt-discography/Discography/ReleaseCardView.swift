@@ -5,6 +5,7 @@
 //  Created by Jose A. Mena on 3/28/24.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct ReleaseCardView: View {
@@ -29,24 +30,17 @@ struct ReleaseCardView: View {
     }
 
     private var thumbnail: some View {
-        AsyncImage(
-            url: URL(string: release.thumb),
-            content: { image in
-                image
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: 12)
-                    )
-            },
-            placeholder: {
-                Image("cd")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 100, height: 100)
+        KFImage(URL(string: release.thumb))
+            .placeholder { progress in
+                ProgressView(progress)
             }
-        )
+            .onFailureImage(UIImage(named: "cd"))
+            .resizable()
+            .aspectRatio(contentMode: .fill)
+            .frame(width: 100, height: 100)
+            .clipShape(
+                RoundedRectangle(cornerRadius: 12)
+            )
     }
 
     private var releaseInfo: some View {

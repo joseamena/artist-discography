@@ -5,6 +5,7 @@
 //  Created by Jose A. Mena on 3/28/24.
 //
 
+import Kingfisher
 import SwiftUI
 
 struct ReleaseDetailView: View {
@@ -46,18 +47,19 @@ struct ReleaseDetailView: View {
     }
 
     private var image: some View {
-        AsyncImage(
-            url: viewModel.imageUrl,
-            content: { image in
-                image
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fit)
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: 12)
-                    )
-            },
-            placeholder: {}
-        )
+        KFImage(viewModel.imageUrl)
+            .placeholder { progress in
+                ProgressView(progress)
+            }
+            .onFailureImage(UIImage(named: "cd"))
+            .resizable()
+            .aspectRatio(
+                imageAspectRatio,
+                contentMode: .fit
+            )
+            .clipShape(
+                RoundedRectangle(cornerRadius: 12)
+            )
     }
 
     private var title: some View {
@@ -108,6 +110,16 @@ struct ReleaseDetailView: View {
         Task {
             await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
         }
+    }
+
+    // MARK: - Helpers -
+
+    private var imageAspectRatio: CGFloat {
+        // Protect against division by 0
+        guard viewModel.imageSize.height > 0 else {
+            return 1
+        }
+        return viewModel.imageSize.width / viewModel.imageSize.height
     }
 }
 

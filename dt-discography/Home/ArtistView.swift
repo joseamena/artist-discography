@@ -29,6 +29,7 @@ struct ArtistView: View {
                 content
             }
         }
+        .accessibilityIdentifier("artistView")
         .task(priority: .background) {
             await viewModel.fetchArtist()
         }

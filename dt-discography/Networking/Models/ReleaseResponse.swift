@@ -13,7 +13,7 @@ struct ReleaseResponse: Decodable {
     let images: [DiscogsImageData]
     let formats: [Format]?
     let genres: [String]
-    let styles: [String]
+    let styles: [String]?
     let community: Community?
 
     struct Track: Decodable {
