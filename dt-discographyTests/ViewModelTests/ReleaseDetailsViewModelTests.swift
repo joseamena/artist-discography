@@ -14,7 +14,10 @@ final class ReleaseDetailsViewModelTests: XCTestCase {
 
     @MainActor override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        releaseDetailsViewModel = ReleaseDetailsViewModel(client: mockNetworkClient)
+        releaseDetailsViewModel = ReleaseDetailsViewModel(
+            client: mockNetworkClient,
+            persistentController: MockPersistenceController()
+        )
     }
 
     override func tearDownWithError() throws {
@@ -22,7 +25,7 @@ final class ReleaseDetailsViewModelTests: XCTestCase {
     }
 
     @MainActor func testFetchReleasesError() async throws {
-        _ = await releaseDetailsViewModel.fetchReleaseDetails(uri: "https://some.uri")
+        _ = await releaseDetailsViewModel.fetchReleaseDetails(release: .mock)
         XCTAssert(releaseDetailsViewModel.loadStatus == .error(AppError.unknown))
     }
 
@@ -38,7 +41,7 @@ final class ReleaseDetailsViewModelTests: XCTestCase {
             styles: [],
             community: nil
         )
-        _ = await releaseDetailsViewModel.fetchReleaseDetails(uri: "https://some.uri")
+        _ = await releaseDetailsViewModel.fetchReleaseDetails(release: .mock)
         XCTAssert(releaseDetailsViewModel.loadStatus == .none)
     }
 }

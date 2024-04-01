@@ -14,6 +14,21 @@
             </uniquenessConstraint>
         </uniquenessConstraints>
     </entity>
+    <entity name="ReleaseDetailsEntity" representedClassName="ReleaseDetailsEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageHeight" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String"/>
+        <attribute name="imageWidth" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="rating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="releaseEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReleaseEntity" inverseName="releaseDetails" inverseEntity="ReleaseEntity"/>
+        <relationship name="tracks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TrackEntity" inverseName="releaseDetails" inverseEntity="TrackEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
     <entity name="ReleaseEntity" representedClassName="ReleaseEntity" syncable="YES" codeGenerationType="class">
         <attribute name="format" optional="YES" attributeType="String"/>
         <attribute name="id" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -23,6 +38,19 @@
         <attribute name="title" optional="YES" attributeType="String"/>
         <attribute name="year" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArtistEntity" inverseName="releases" inverseEntity="ArtistEntity"/>
+        <relationship name="releaseDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReleaseDetailsEntity" inverseName="releaseEntity" inverseEntity="ReleaseDetailsEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="TrackEntity" representedClassName="TrackEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="position" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="releaseDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ReleaseDetailsEntity" inverseName="tracks" inverseEntity="ReleaseDetailsEntity"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="id"/>
@@ -32,5 +60,10 @@
     <entity name="UrlEntity" representedClassName="UrlEntity" syncable="YES" codeGenerationType="class">
         <attribute name="url" optional="YES" attributeType="String"/>
         <relationship name="artist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ArtistEntity" inverseName="urls" inverseEntity="ArtistEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="url"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

@@ -9,7 +9,10 @@ import Kingfisher
 import SwiftUI
 
 struct ReleaseDetailView: View {
-    @StateObject private var viewModel = ReleaseDetailsViewModel(client: DTDiscographyClient.shared)
+    @StateObject private var viewModel = ReleaseDetailsViewModel(
+        client: DTDiscographyClient.shared,
+        persistentController: CoreDataPersistenceController.shared
+    )
 
     let release: Release
 
@@ -27,7 +30,7 @@ struct ReleaseDetailView: View {
             }
         }
         .task {
-            await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
+            await viewModel.fetchReleaseDetails(release: release)
         }
     }
 
@@ -108,7 +111,7 @@ struct ReleaseDetailView: View {
 
     private func errorRetryButtonPressed() {
         Task {
-            await viewModel.fetchReleaseDetails(uri: release.resourceUrl)
+            await viewModel.fetchReleaseDetails(release: release)
         }
     }
 

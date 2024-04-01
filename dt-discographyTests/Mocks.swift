@@ -42,4 +42,25 @@ class MockPersistenceController: PersistenceController {
     }
 
     func saveReleases(releases _: [dt_discography.Release], for _: String) {}
+
+    func fetchReleaseDetails(with id: String) throws -> dt_discography.ReleaseDetails {
+        return ReleaseDetails(id: 0, imageUrl: nil, imageSize: .zero, title: "", rating: nil, tracks: [])
+    }
+
+    func saveReleaseDetails(releaseDetails _: dt_discography.ReleaseDetails) {}
+}
+
+extension Release {
+    static var mock: Release {
+        Release(
+            id: 0,
+            mainRelease: nil,
+            format: nil,
+            title: "",
+            label: nil,
+            resourceUrl: "",
+            year: nil,
+            thumb: ""
+        )
+    }
 }

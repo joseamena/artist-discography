@@ -12,6 +12,8 @@ protocol PersistenceController {
     func saveArtist(artist: Artist)
     func fetchReleases(for artistWithId: String) throws -> [Release]
     func saveReleases(releases: [Release], for artistId: String)
+    func fetchReleaseDetails(with id: String) throws -> ReleaseDetails
+    func saveReleaseDetails(releaseDetails: ReleaseDetails)
 }
 
 struct CoreDataPersistenceController: PersistenceController {
@@ -41,6 +43,7 @@ struct CoreDataPersistenceController: PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+        container.viewContext.mergePolicy = NSMergeByPropertyStoreTrumpMergePolicy
     }
 
     func fetchArtist(with id: String) throws -> Artist {
@@ -134,6 +137,82 @@ struct CoreDataPersistenceController: PersistenceController {
             try container.viewContext.save()
         } catch {
             print("Error saving.", error)
+        }
+    }
+
+    func fetchReleaseDetails(with id: String) throws -> ReleaseDetails {
+        let request = NSFetchRequest<ReleaseDetailsEntity>(entityName: "ReleaseDetailsEntity")
+        request.predicate = NSPredicate(format: "id == %@", id)
+
+        guard let releaseDetailsEntity = try container.viewContext.fetch(request).first else {
+            throw AppError.unknown
+        }
+
+        let width = CGFloat(releaseDetailsEntity.imageWidth)
+        let height = CGFloat(releaseDetailsEntity.imageHeight)
+        let tracks = releaseDetailsEntity.tracks?.allObjects.compactMap {
+            print($0)
+            return $0 as? TrackEntity
+        }
+        .map { (trackEntity: TrackEntity) in
+            Track(
+                position: trackEntity.position ?? "",
+                title: trackEntity.title ?? "",
+                duration: trackEntity.duration ?? ""
+            )
+        } ?? []
+
+        return ReleaseDetails(
+            id: Int(releaseDetailsEntity.id),
+            imageUrl: releaseDetailsEntity.imageUrl,
+            imageSize: CGSize(width: width, height: height),
+            title: releaseDetailsEntity.title ?? "Unknown",
+            rating: Int(releaseDetailsEntity.rating),
+            tracks: tracks // releaseDetailsEntity.tracks?.allObjects.compactMap { ($0 as? TrackEntity) } ?? []
+        )
+    }
+
+    func saveReleaseDetails(releaseDetails: ReleaseDetails) {
+        let request = NSFetchRequest<ReleaseEntity>(entityName: "ReleaseEntity")
+        request.predicate = NSPredicate(format: "id == %@", "\(releaseDetails.id)")
+
+        let releaseEntity: ReleaseEntity?
+
+        do {
+            releaseEntity = try container.viewContext.fetch(request).first
+        } catch {
+            print("Error fetchig release", error)
+            return
+        }
+
+        let releaseDetailsEntity = ReleaseDetailsEntity(context: container.viewContext)
+
+        let trackEntities = releaseDetails.tracks.map {
+            let trackEntity = TrackEntity(context: container.viewContext)
+            trackEntity.duration = $0.duration
+            trackEntity.position = $0.position
+            trackEntity.title = $0.title
+            trackEntity.releaseDetails = releaseDetailsEntity
+            return trackEntity
+        }
+
+        releaseDetailsEntity.id = Int32(releaseDetails.id)
+        releaseDetailsEntity.title = releaseDetails.title
+        releaseDetailsEntity.imageUrl = releaseDetails.imageUrl
+        releaseDetailsEntity.imageHeight = Float(releaseDetails.imageSize.height)
+        releaseDetailsEntity.imageWidth = Float(releaseDetails.imageSize.width)
+        releaseDetailsEntity.tracks = NSSet(array: trackEntities)
+        if let rating = releaseDetails.rating {
+            releaseDetailsEntity.rating = Int16(rating)
+        }
+
+        releaseEntity?.releaseDetails = releaseDetailsEntity
+        releaseDetailsEntity.releaseEntity = releaseEntity
+
+        do {
+            try container.viewContext.save()
+        } catch {
+            print("Error saving release details", error)
         }
     }
 }

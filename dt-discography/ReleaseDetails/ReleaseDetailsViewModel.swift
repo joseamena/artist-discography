@@ -12,6 +12,7 @@ class ReleaseDetailsViewModel: ObservableObject {
     // MARK: - Private properties -
 
     private let client: NetworkClient
+    private let persistenceController: PersistenceController
 
     // MARK: - Outputs -
 
@@ -24,45 +25,63 @@ class ReleaseDetailsViewModel: ObservableObject {
 
     // MARK: - Initialization -
 
-    init(client: NetworkClient) {
+    init(client: NetworkClient, persistentController: PersistenceController) {
         self.client = client
+        persistenceController = persistentController
     }
 
     // MARK: - Data Fetching -
 
-    func fetchReleaseDetails(uri: String) async {
-        let releaseTarget = ReleaseTarget(path: uri)
+    func fetchReleaseDetails(release: Release) async {
         loadStatus = .loading
-
+        let releaseDetails: ReleaseDetails
         do {
-            let releaseResponse = try await client.buildRequest(
-                target: releaseTarget,
-                type: ReleaseResponse.self,
-                ignoreCache: false
-            )
-
+            if client.connectivity {
+                releaseDetails = try await networkFetch(url: release.resourceUrl)
+                persistenceController.saveReleaseDetails(releaseDetails: releaseDetails)
+            } else {
+                releaseDetails = try persistenceController.fetchReleaseDetails(with: "\(release.id)")
+            }
             loadStatus = .none
-
-            if let imageData = releaseResponse.images.first(where: { $0.type == "primary" }) ?? releaseResponse.images.first {
-                imageUrl = URL(string: imageData.uri)
-                imageSize = CGSize(width: imageData.width, height: imageData.height)
-            }
-
-            title = releaseResponse.title
-            trackListing = releaseResponse.tracklist
-                .map {
-                    Track(
-                        position: $0.position,
-                        title: $0.title,
-                        duration: $0.duration
-                    )
-                }
-                .removingDuplicates()
-            if let ratingAverage = releaseResponse.community?.rating.average {
-                rating = Int(ceil(ratingAverage))
-            }
         } catch {
             loadStatus = .error(error)
+            return
         }
+
+        title = releaseDetails.title
+        imageUrl = URL(string: releaseDetails.imageUrl ?? "")
+        imageSize = releaseDetails.imageSize
+        trackListing = releaseDetails.tracks
+        rating = releaseDetails.rating
+    }
+
+    private func networkFetch(url: String) async throws -> ReleaseDetails {
+        let releaseTarget = ReleaseTarget(path: url)
+
+        let releaseResponse = try await client.buildRequest(
+            target: releaseTarget,
+            type: ReleaseResponse.self,
+            ignoreCache: false
+        )
+
+        let imageData = releaseResponse.images.first(where: { $0.type == "primary" }) ?? releaseResponse.images.first
+        let tracks = releaseResponse.tracklist
+            .map {
+                Track(
+                    position: $0.position,
+                    title: $0.title,
+                    duration: $0.duration
+                )
+            }
+            .removingDuplicates()
+
+        return ReleaseDetails(
+            id: releaseResponse.id,
+            imageUrl: imageData?.uri,
+            imageSize: CGSize(width: imageData?.width ?? 0, height: imageData?.height ?? 0),
+            title: releaseResponse.title,
+            rating: Int(ceil(releaseResponse.community?.rating.average ?? 0)),
+            tracks: tracks
+        )
     }
 }

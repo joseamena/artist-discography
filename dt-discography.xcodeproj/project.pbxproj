@@ -48,6 +48,7 @@
 		78F8615E2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */; };
 		78F861602BBA78C100C1F4DB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615F2BBA78C100C1F4DB /* Artist.swift */; };
 		78F861622BBA9BFE00C1F4DB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861612BBA9BFE00C1F4DB /* Configuration.swift */; };
+		78F861642BBB11D200C1F4DB /* ReleaseDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861632BBB11D200C1F4DB /* ReleaseDetails.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -111,6 +112,7 @@
 		78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetailsViewModelTests.swift; sourceTree = "<group>"; };
 		78F8615F2BBA78C100C1F4DB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
 		78F861612BBA9BFE00C1F4DB /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		78F861632BBB11D200C1F4DB /* ReleaseDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetails.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				78F861462BB670BF00C1F4DB /* Track.swift */,
+				78F861632BBB11D200C1F4DB /* ReleaseDetails.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -482,6 +485,7 @@
 				78F861372BB5D7AE00C1F4DB /* DiscographyView.swift in Sources */,
 				78F861422BB66BED00C1F4DB /* ReleaseDetailsViewModel.swift in Sources */,
 				78F861272BB4C29D00C1F4DB /* ArtistView.swift in Sources */,
+				78F861642BBB11D200C1F4DB /* ReleaseDetails.swift in Sources */,
 				78F860ED2BB4AD6E00C1F4DB /* dt_discography.xcdatamodeld in Sources */,
 				78F8611D2BB4B98100C1F4DB /* ArtistReleasesResponse.swift in Sources */,
 				78F861602BBA78C100C1F4DB /* Artist.swift in Sources */,
