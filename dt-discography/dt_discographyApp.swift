@@ -9,12 +9,11 @@ import SwiftUI
 
 @main
 struct dt_discographyApp: App {
-    let persistenceController = PersistenceController.shared
+    let persistenceController = CoreDataPersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
             ArtistView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

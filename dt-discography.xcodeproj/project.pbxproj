@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		78F860E12BB4AD6900C1F4DB /* dt_discographyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F860E02BB4AD6900C1F4DB /* dt_discographyApp.swift */; };
-		78F860E32BB4AD6900C1F4DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F860E22BB4AD6900C1F4DB /* ContentView.swift */; };
 		78F860E52BB4AD6E00C1F4DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F860E42BB4AD6E00C1F4DB /* Assets.xcassets */; };
 		78F860E82BB4AD6E00C1F4DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 78F860E72BB4AD6E00C1F4DB /* Preview Assets.xcassets */; };
 		78F860EA2BB4AD6E00C1F4DB /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F860E92BB4AD6E00C1F4DB /* Persistence.swift */; };
@@ -47,6 +46,8 @@
 		78F8615A2BB8C4C800C1F4DB /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861592BB8C4C800C1F4DB /* Mocks.swift */; };
 		78F8615C2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615B2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift */; };
 		78F8615E2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */; };
+		78F861602BBA78C100C1F4DB /* Artist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F8615F2BBA78C100C1F4DB /* Artist.swift */; };
+		78F861622BBA9BFE00C1F4DB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F861612BBA9BFE00C1F4DB /* Configuration.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +70,6 @@
 /* Begin PBXFileReference section */
 		78F860DD2BB4AD6900C1F4DB /* dt-discography.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "dt-discography.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F860E02BB4AD6900C1F4DB /* dt_discographyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dt_discographyApp.swift; sourceTree = "<group>"; };
-		78F860E22BB4AD6900C1F4DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		78F860E42BB4AD6E00C1F4DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		78F860E72BB4AD6E00C1F4DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		78F860E92BB4AD6E00C1F4DB /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -109,6 +109,8 @@
 		78F861592BB8C4C800C1F4DB /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		78F8615B2BB8C6FD00C1F4DB /* DiscographyViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscographyViewModelTests.swift; sourceTree = "<group>"; };
 		78F8615D2BB8C8FC00C1F4DB /* ReleaseDetailsViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseDetailsViewModelTests.swift; sourceTree = "<group>"; };
+		78F8615F2BBA78C100C1F4DB /* Artist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Artist.swift; sourceTree = "<group>"; };
+		78F861612BBA9BFE00C1F4DB /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,18 +163,19 @@
 			isa = PBXGroup;
 			children = (
 				78F860E02BB4AD6900C1F4DB /* dt_discographyApp.swift */,
+				78F861152BB4AEF500C1F4DB /* AppError.swift */,
+				78F860E92BB4AD6E00C1F4DB /* Persistence.swift */,
+				78F861612BBA9BFE00C1F4DB /* Configuration.swift */,
 				78F8614A2BB689A900C1F4DB /* Extensions */,
 				78F8613A2BB656CD00C1F4DB /* ReleaseDetails */,
 				78F861352BB5D79200C1F4DB /* Discography */,
 				78F861342BB5BFC200C1F4DB /* Home */,
-				78F861282BB4D9B700C1F4DB /* Models */,
-				78F861222BB4BE7100C1F4DB /* Views */,
+				78F861282BB4D9B700C1F4DB /* SharedModels */,
+				78F861222BB4BE7100C1F4DB /* SharedViews */,
 				78F8610F2BB4ADED00C1F4DB /* Networking */,
 				78F860E42BB4AD6E00C1F4DB /* Assets.xcassets */,
-				78F860E92BB4AD6E00C1F4DB /* Persistence.swift */,
 				78F860EB2BB4AD6E00C1F4DB /* dt_discography.xcdatamodeld */,
 				78F860E62BB4AD6E00C1F4DB /* Preview Content */,
-				78F861152BB4AEF500C1F4DB /* AppError.swift */,
 			);
 			path = "dt-discography";
 			sourceTree = "<group>";
@@ -237,22 +240,21 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		78F861222BB4BE7100C1F4DB /* Views */ = {
+		78F861222BB4BE7100C1F4DB /* SharedViews */ = {
 			isa = PBXGroup;
 			children = (
-				78F860E22BB4AD6900C1F4DB /* ContentView.swift */,
 				78F8612E2BB525E100C1F4DB /* CustomButtons.swift */,
 				78F861502BB6FBB000C1F4DB /* ErrorView.swift */,
 			);
-			path = Views;
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
-		78F861282BB4D9B700C1F4DB /* Models */ = {
+		78F861282BB4D9B700C1F4DB /* SharedModels */ = {
 			isa = PBXGroup;
 			children = (
 				78F861292BB4D9C800C1F4DB /* LoadStatus.swift */,
 			);
-			path = Models;
+			path = SharedModels;
 			sourceTree = "<group>";
 		};
 		78F861342BB5BFC200C1F4DB /* Home */ = {
@@ -260,6 +262,7 @@
 			children = (
 				78F861242BB4BF0900C1F4DB /* ArtistViewModel.swift */,
 				78F861262BB4C29D00C1F4DB /* ArtistView.swift */,
+				78F8615F2BBA78C100C1F4DB /* Artist.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -462,7 +465,7 @@
 				78F861112BB4AE0B00C1F4DB /* NetworkClient.swift in Sources */,
 				78F861402BB663D000C1F4DB /* ReleaseResponse.swift in Sources */,
 				78F8611F2BB4BD3E00C1F4DB /* ReleasesTarget.swift in Sources */,
-				78F860E32BB4AD6900C1F4DB /* ContentView.swift in Sources */,
+				78F861622BBA9BFE00C1F4DB /* Configuration.swift in Sources */,
 				78F861252BB4BF0900C1F4DB /* ArtistViewModel.swift in Sources */,
 				78F861492BB67A1000C1F4DB /* RatingView.swift in Sources */,
 				78F861532BB893DA00C1F4DB /* FoundationExtesnsions.swift in Sources */,
@@ -481,6 +484,7 @@
 				78F861272BB4C29D00C1F4DB /* ArtistView.swift in Sources */,
 				78F860ED2BB4AD6E00C1F4DB /* dt_discography.xcdatamodeld in Sources */,
 				78F8611D2BB4B98100C1F4DB /* ArtistReleasesResponse.swift in Sources */,
+				78F861602BBA78C100C1F4DB /* Artist.swift in Sources */,
 				78F8612A2BB4D9C800C1F4DB /* LoadStatus.swift in Sources */,
 				78F8612F2BB525E100C1F4DB /* CustomButtons.swift in Sources */,
 				78F861392BB5D8C700C1F4DB /* DiscographyViewModel.swift in Sources */,

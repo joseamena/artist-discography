@@ -29,3 +29,17 @@ class MockNetworkClient: NetworkClient {
         return response
     }
 }
+
+class MockPersistenceController: PersistenceController {
+    func fetchArtist(with id: String) throws -> dt_discography.Artist {
+        return Artist(id: 0, name: "name", profile: "a profile")
+    }
+
+    func saveArtist(artist _: dt_discography.Artist) {}
+
+    func fetchReleases(for _: String) throws -> [dt_discography.Release] {
+        []
+    }
+
+    func saveReleases(releases _: [dt_discography.Release], for _: String) {}
+}

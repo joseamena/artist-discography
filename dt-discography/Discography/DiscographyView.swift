@@ -10,7 +10,10 @@ import SwiftUI
 struct DiscographyView: View {
     // MARK: - Properties -
 
-    @StateObject private var viewModel = DiscographyViewModel(client: DTDiscographyClient.shared)
+    @StateObject private var viewModel = DiscographyViewModel(
+        client: DTDiscographyClient.shared,
+        persistenceController: CoreDataPersistenceController.shared
+    )
 
     // MARK: - UIContent -
 

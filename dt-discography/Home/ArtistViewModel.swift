@@ -5,7 +5,7 @@
 //  Created by Jose A. Mena on 3/27/24.
 //
 
-import Combine
+import CoreData
 import Foundation
 
 @MainActor
@@ -13,6 +13,7 @@ class ArtistViewModel: ObservableObject {
     // MARK: - Private properties -
 
     private let client: NetworkClient
+    private let persistenceController: PersistenceController
 
     // MARK: - Outputs -
 
@@ -26,35 +27,58 @@ class ArtistViewModel: ObservableObject {
 
     // MARK: - Initialization -
 
-    init(client: NetworkClient) {
+    init(client: NetworkClient, persistenceController: PersistenceController) {
         self.client = client
+        self.persistenceController = persistenceController
     }
 
-    // MARK: - Data Fetching -
+    // MARK: - Public Functions -
 
     func fetchArtist() async {
-        let artistTarget = ArtistTarget(artistId: "335835")
         loadStatus = .loading
+        let artist: Artist
 
         do {
-            let artistResponse = try await client.buildRequest(target: artistTarget, type: ArtistResponse.self, ignoreCache: false)
-            loadStatus = .none
-            if let primaryImage = artistResponse.images.first(where: { $0.type == "secondary" })?.uri {
-                primaryImageUrl = URL(string: primaryImage)
+            if client.connectivity {
+                artist = try await networkFetch(artistId: "\(DTConfiguration.artistId)")
+                persistenceController.saveArtist(artist: artist)
+            } else {
+                artist = try persistenceController.fetchArtist(with: "\(DTConfiguration.artistId)")
             }
-            artistName = artistResponse.name
-            profile = artistResponse.profile
-                .replacingOccurrences(of: "a=", with: "")
-                .replacingOccurrences(of: "[", with: "")
-                .replacingOccurrences(of: "]", with: "")
-            currentMembers = artistResponse
-                .members?
-                .filter { $0.active }
-                .map { $0.name }.joined(separator: ", ")
-                .trimmingCharacters(in: .whitespacesAndNewlines)
-            urls = artistResponse.urls ?? []
+            loadStatus = .none
         } catch {
             loadStatus = .error(error)
+            return
         }
+
+        if let primaryImage = artist.imageUrl {
+            primaryImageUrl = URL(string: primaryImage)
+        }
+
+        artistName = artist.name
+        profile = artist.profile
+            .replacingOccurrences(of: "a=", with: "")
+            .replacingOccurrences(of: "[", with: "")
+            .replacingOccurrences(of: "]", with: "")
+        currentMembers = artist.currentMembers
+        urls = artist.urls ?? []
+    }
+
+    // MARK: - Private Functions -
+
+    private func networkFetch(artistId: String) async throws -> Artist {
+        let artistTarget = ArtistTarget(artistId: artistId)
+
+        let artistResponse = try await client.buildRequest(target: artistTarget, type: ArtistResponse.self, ignoreCache: false)
+
+        let imageUrl = artistResponse.images.first(where: { $0.type == "secondary" })?.uri
+
+        return Artist(
+            id: artistResponse.id,
+            name: artistResponse.name,
+            profile: artistResponse.profile,
+            imageUrl: imageUrl,
+            urls: artistResponse.urls
+        )
     }
 }

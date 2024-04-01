@@ -11,7 +11,10 @@ import SwiftUI
 struct ArtistView: View {
     // MARK: - Private Properties -
 
-    @StateObject private var viewModel = ArtistViewModel(client: DTDiscographyClient.shared)
+    @StateObject private var viewModel = ArtistViewModel(
+        client: DTDiscographyClient.shared,
+        persistenceController: CoreDataPersistenceController.shared
+    )
     @State private var navigationPath = NavigationPath()
 
     // MARK: - UI Content -
