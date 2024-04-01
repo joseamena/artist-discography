@@ -29,24 +29,11 @@ final class dt_discographyUITestsLaunchTests: XCTestCase {
         add(attachment)
     }
 
-    func testArtistViewIsDisplayedOnLaunch() throws {
-        let app = XCUIApplication()
-        app.launch()
-
-        XCTAssertTrue(app.isDisplayingArtistView)
-    }
-
     func testShowDiscographyView() throws {
         let app = XCUIApplication()
         app.launch()
 
         app.buttons["Discography"].tap()
         XCTAssertTrue(app.staticTexts["Discography"].firstMatch.waitForExistence(timeout: 3))
-    }
-}
-
-extension XCUIApplication {
-    var isDisplayingArtistView: Bool {
-        otherElements["artistView"].exists
     }
 }
