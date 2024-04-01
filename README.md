@@ -4,6 +4,18 @@ Welcome to the Musical Artist Discography App! This app is designed to provide u
 
 ## Features
 
-- **Discography**: Dive into the complete discography of each artist, organized chronologically with albums, singles, EPs, and collaborations.
+- **Artist Details Screen**: Short summary of the artist.
+- **Discography Screen**: Dive into the complete discography of the artist.
+- **Relese Details Screen**: Track listing and other details about the artist's release.
+- **Caching**: The app will cache the data to prevent making requests.
+- **Offline mode**: If the app has been ran before, the data is stored locally to persist between launches.
+
+## Testing
+
+- **Unit Testing**: Some basic unit testing for view models.
+- **UI Testing**: Only a few basic demonstration tests for Artist Screen and Discography Screen.
 
 
+## Dependencies
+
+- **Kingfisher**: For asynchonous image loading and caching.
